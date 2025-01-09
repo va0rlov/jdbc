@@ -36,6 +36,10 @@ dependencies {
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
+springBoot {
+	mainClass = 'ru.productstar.spring.jdbc1.manager.Main'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }

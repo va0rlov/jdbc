@@ -14,6 +14,19 @@ public class Contact {
     private final String phone;
 
     public Contact(Long id, String name, String surname, String email, String phone) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be null or blank");
+        }
+        if (surname == null || surname.isBlank()) {
+            throw new IllegalArgumentException("Surname cannot be null or blank");
+        }
+        if (email == null || email.isBlank()) {
+            throw new IllegalArgumentException("Email cannot be null or blank");
+        }
+        if (phone == null || phone.isBlank()) {
+            throw new IllegalArgumentException("Phone cannot be null or blank");
+        }
+
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -22,10 +35,7 @@ public class Contact {
     }
 
     public Contact(String name, String surname, String email, String phone) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.phone = phone;
+        this(null, name, surname, email, phone);
     }
 
     public void setId(long id) {

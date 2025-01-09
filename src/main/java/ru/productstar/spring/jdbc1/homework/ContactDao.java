@@ -1,42 +1,20 @@
 package ru.productstar.spring.jdbc1.homework;
 
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
-import java.util.Collections;
 import java.util.List;
 
-public class ContactDao {
+/**
+ * Data Access Object for managing contacts in the database.
+ */
+public interface ContactDao {
+    List<Contact> getAllContacts();
 
-    private final NamedParameterJdbcTemplate namedJdbcTemplate;
+    Contact getContact(long contactId);
 
-    public ContactDao(NamedParameterJdbcTemplate namedJdbcTemplate) {
-        this.namedJdbcTemplate = namedJdbcTemplate;
-    }
+    long addContact(Contact contact);
 
-    public List<Contact> getAllContacts() {
-        // TODO Implement me!
-        return Collections.emptyList();
-    }
+    void updatePhoneNumber(long contactId, String phoneNumber);
 
-    public Contact getContact(long contactId) {
-        // TODO Implement me!
-        return null;
-    }
+    void updateEmail(long contactId, String email);
 
-    public long addContact(Contact contact) {
-        // TODO Implement me!
-        return -1;
-    }
-
-    public void updatePhoneNumber(long contactId, String phoneNumber) {
-        // TODO Implement me!
-    }
-
-    public void updateEmail(long contactId, String email) {
-        // TODO Implement me!
-    }
-
-    public void deleteContact(long contactId) {
-        // TODO Implement me!
-    }
+    void deleteContact(long contactId);
 }

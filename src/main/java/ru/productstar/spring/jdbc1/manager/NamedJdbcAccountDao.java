@@ -19,14 +19,9 @@ public class NamedJdbcAccountDao implements AccountDao {
         this.namedJdbcTemplate = namedJdbcTemplate;
     }
 
-
     @Override
     public Account addAccount(long id, long amount) {
-        namedJdbcTemplate.update(
-                "INSERT INTO ACCOUNT(ID, AMOUNT) VALUES(:id, :amount)",
-                new MapSqlParameterSource()
-                    .addValue("id", id)
-                    .addValue("amount", amount)
+        namedJdbcTemplate.update("INSERT INTO ACCOUNT(ID, AMOUNT) VALUES(:id, :amount)", new MapSqlParameterSource().addValue("id", id).addValue("amount", amount)
         );
         return new Account(id, amount);
     }
@@ -34,18 +29,12 @@ public class NamedJdbcAccountDao implements AccountDao {
     @Override
     public Account addAccount(long amount) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
         namedJdbcTemplate.update(
-                "INSERT INTO ACCOUNT(AMOUNT) VALUES(:amount)",
-                new MapSqlParameterSource("amount", amount),
-                keyHolder,
-                new String[] { "id" }
+                "INSERT INTO ACCOUNT(AMOUNT) VALUES(:amount)", new MapSqlParameterSource("amount", amount), keyHolder, new String[]{"id"}
         );
-
         var accountId = keyHolder.getKey().longValue();
         return new Account(accountId, amount);
     }
-
 
     @Override
     public Account getAccount(long accountId) {

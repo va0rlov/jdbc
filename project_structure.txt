@@ -21,6 +21,7 @@
 │   │   │   │   │   │   │   ├── 📄 Contact.java
 │   │   │   │   │   │   │   ├── 📄 ContactConfiguration.java
 │   │   │   │   │   │   │   ├── 📄 ContactDao.java
+│   │   │   │   │   │   │   ├── 📄 ContactDaoImpl.java
 │   │   │   │   │   │   ├── 📁 manager/
 │   │   │   │   │   │   │   ├── 📄 Account.java
 │   │   │   │   │   │   │   ├── 📄 AccountDao.java
@@ -31,7 +32,6 @@
 │   │   │   │   │   │   │   ├── 📄 NamedJdbcAccountDao.java
 │   ├── 📁 resources/
 │   │   ├── 📄 application.properties
-│   │   ├── 📄 jdbc.properties
 ├── 📁 test/
 │   ├── 📁 java/
 │   │   ├── 📁 ru/

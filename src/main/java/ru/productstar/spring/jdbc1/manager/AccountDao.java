@@ -3,7 +3,6 @@ package ru.productstar.spring.jdbc1.manager;
 import java.util.List;
 
 public interface AccountDao {
-
     Account addAccount(long id, long amount);
 
     Account addAccount(long amount);

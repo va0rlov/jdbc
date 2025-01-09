@@ -1,6 +1,5 @@
 package ru.productstar.spring.jdbc1.manager;
 
-//import com.product.star.account.manager.config.ApplicationConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.productstar.spring.jdbc1.manager.config.ApplicationConfiguration;
 
@@ -12,14 +11,13 @@ public class Main {
         var accountDao = applicationContext.getBean(AccountDao.class);
 
         var account = accountDao.getAccount(1L);
-
         System.out.println(account);
 
         accountDao.setAmount(1L, 2000L);
         account = accountDao.getAccount(1L);
         System.out.println(account);
 
-        var newAccount = accountDao.addAccount(10L,10000L);
+        var newAccount = accountDao.addAccount(10L, 10000L);
         System.out.println(newAccount);
 
         var accounts = accountDao.getAllAccounts();

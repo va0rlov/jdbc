@@ -6,6 +6,9 @@ public class Account {
     private long amount;
 
     public Account(long id, long amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative");
+        }
         this.id = id;
         this.amount = amount;
     }
@@ -19,6 +22,9 @@ public class Account {
     }
 
     public void setAmount(long amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Amount cannot be negative");
+        }
         this.amount = amount;
     }
 
