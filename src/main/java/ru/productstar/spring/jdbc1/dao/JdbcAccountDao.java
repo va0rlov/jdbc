@@ -58,4 +58,9 @@ public class JdbcAccountDao implements AccountDao {
     public List<Account> getAllAccounts() {
         return jdbcTemplate.query(GET_ALL_ACCOUNTS_SQL, ACCOUNT_ROW_MAPPER);
     }
+
+    @Override
+    public void deleteAllAccounts() {
+        jdbcTemplate.update("DELETE FROM ACCOUNT");
+    }
 }

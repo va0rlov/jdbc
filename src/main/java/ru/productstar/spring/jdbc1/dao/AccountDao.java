@@ -14,4 +14,6 @@ public interface AccountDao {
     void setAmount(long accountId, long amount);
 
     List<Account> getAllAccounts();
+
+    void deleteAllAccounts(); // Новый метод для удаления всех записей
 }
