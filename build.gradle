@@ -42,6 +42,9 @@ springBoot {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	jvmArgs = ["-javaagent:${classpath.find { it.name.contains("byte-buddy-agent") }.absolutePath}", // Агент для Mockito
+			   "-Xshare:off" // Отключаем Class Data Sharing (CDS)
+	]
 }
 
 bootJar {

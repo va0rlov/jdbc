@@ -15,7 +15,7 @@
 │   │   │   │   ├── 📁 spring/
 │   │   │   │   │   ├── 📁 jdbc1/
 │   │   │   │   │   │   ├── 📁 common/
-│   │   │   │   │   │   │   ├── 📄 JdbcConfig.java
+│   │   │   │   │   │   │   ├── 📄 JdbcConfiguration.java
 │   │   │   │   │   │   │   ├── 📄 PropertiesConfiguration.java
 │   │   │   │   │   │   ├── 📁 homework/
 │   │   │   │   │   │   │   ├── 📄 Contact.java
@@ -32,6 +32,7 @@
 │   │   │   │   │   │   │   ├── 📄 NamedJdbcAccountDao.java
 │   ├── 📁 resources/
 │   │   ├── 📄 application.properties
+│   │   ├── 📄 jdbc.properties
 ├── 📁 test/
 │   ├── 📁 java/
 │   │   ├── 📁 ru/
@@ -40,3 +41,5 @@
 │   │   │   │   │   ├── 📁 jdbc1/
 │   │   │   │   │   │   ├── 📁 homework/
 │   │   │   │   │   │   │   ├── 📄 ContactDaoTests.java
+│   ├── 📁 resources/
+│   │   ├── 📄 contact.sql

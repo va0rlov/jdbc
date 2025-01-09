@@ -20,18 +20,12 @@ public class Contact {
         if (surname == null || surname.isBlank()) {
             throw new IllegalArgumentException("Surname cannot be null or blank");
         }
-        if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("Email cannot be null or blank");
-        }
-        if (phone == null || phone.isBlank()) {
-            throw new IllegalArgumentException("Phone cannot be null or blank");
-        }
 
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.email = email;
-        this.phone = phone;
+        this.email = email; // email может быть null или пустым
+        this.phone = phone; // phone может быть null или пустым
     }
 
     public Contact(String name, String surname, String email, String phone) {
