@@ -2,13 +2,10 @@ package ru.productstar.spring.jdbc1.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import ru.productstar.spring.jdbc1.model.Account;
 
 import java.util.List;
-import java.util.Objects;
 
 @Repository
 public class JdbcAccountDao implements AccountDao {
@@ -27,21 +24,8 @@ public class JdbcAccountDao implements AccountDao {
     }
 
     @Override
-    public Account addAccount(long id, long amount) {
+    public void addAccount(long id, long amount) {
         jdbcTemplate.update("INSERT INTO ACCOUNT(ID, AMOUNT) VALUES(?, ?)", id, amount);
-        return new Account(id, amount);
-    }
-
-    @Override
-    public Account addAccount(long amount) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(con -> {
-            var ps = con.prepareStatement(CREATE_ACCOUNT_SQL, new String[]{"id"});
-            ps.setLong(1, amount);
-            return ps;
-        }, keyHolder);
-        var accountId = Objects.requireNonNull(keyHolder.getKey()).longValue();
-        return new Account(accountId, amount);
     }
 
     @Override

@@ -3,14 +3,11 @@ package ru.productstar.spring.jdbc1.dao;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import ru.productstar.spring.jdbc1.model.Account;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Repository
 @Primary
@@ -23,20 +20,9 @@ public class NamedJdbcAccountDao implements AccountDao {
     }
 
     @Override
-    public Account addAccount(long id, long amount) {
+    public void addAccount(long id, long amount) {
         namedJdbcTemplate.update("INSERT INTO ACCOUNT(ID, AMOUNT) VALUES(:id, :amount)", new MapSqlParameterSource().addValue("id", id).addValue("amount", amount)
         );
-        return new Account(id, amount);
-    }
-
-    @Override
-    public Account addAccount(long amount) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        namedJdbcTemplate.update(
-                "INSERT INTO ACCOUNT(AMOUNT) VALUES(:amount)", new MapSqlParameterSource("amount", amount), keyHolder, new String[]{"id"}
-        );
-        var accountId = Objects.requireNonNull(keyHolder.getKey()).longValue();
-        return new Account(accountId, amount);
     }
 
     @Override

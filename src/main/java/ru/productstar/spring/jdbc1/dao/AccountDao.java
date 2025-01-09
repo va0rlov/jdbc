@@ -5,9 +5,8 @@ import ru.productstar.spring.jdbc1.model.Account;
 import java.util.List;
 
 public interface AccountDao {
-    Account addAccount(long id, long amount);
-
-    Account addAccount(long amount);
+    default void addAccount(long id, long amount) {
+    }
 
     Account getAccount(long accountId);
 
