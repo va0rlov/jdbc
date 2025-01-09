@@ -12,7 +12,6 @@ public class JdbcAccountDao implements AccountDao {
 
     private static final String GET_ACCOUNT_SQL = "SELECT ID, AMOUNT FROM ACCOUNT WHERE ID = ?";
     private static final String SET_AMOUNT_SQL = "UPDATE ACCOUNT SET AMOUNT = ? WHERE ID = ?";
-    private static final String CREATE_ACCOUNT_SQL = "INSERT INTO ACCOUNT(AMOUNT) VALUES(?)";
     private static final String GET_ALL_ACCOUNTS_SQL = "SELECT ID, AMOUNT FROM ACCOUNT";
 
     private static final RowMapper<Account> ACCOUNT_ROW_MAPPER = (rs, i) -> new Account(rs.getLong("ID"), rs.getLong("AMOUNT"));
