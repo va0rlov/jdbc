@@ -1,0 +1,42 @@
+📄 .gitattributes
+📄 build.gradle
+📄 gradlew
+📄 gradlew.bat
+📄 settings.gradle
+📁 src/
+├── 📁 main/
+│   ├── 📁 java/
+│   │   ├── 📁 projectstructure/
+│   │   │   ├── 📄 ProjectStructureWriter.java
+│   │   │   ├── 📄 ProjectStructureWriterImpl.java
+│   │   │   ├── 📄 ProjectStructureWriterMain.java
+│   │   ├── 📁 ru/
+│   │   │   ├── 📁 productstar/
+│   │   │   │   ├── 📁 spring/
+│   │   │   │   │   ├── 📁 jdbc1/
+│   │   │   │   │   │   ├── 📁 common/
+│   │   │   │   │   │   │   ├── 📄 JdbcConfig.java
+│   │   │   │   │   │   │   ├── 📄 PropertiesConfiguration.java
+│   │   │   │   │   │   ├── 📁 homework/
+│   │   │   │   │   │   │   ├── 📄 Contact.java
+│   │   │   │   │   │   │   ├── 📄 ContactConfiguration.java
+│   │   │   │   │   │   │   ├── 📄 ContactDao.java
+│   │   │   │   │   │   ├── 📁 manager/
+│   │   │   │   │   │   │   ├── 📄 Account.java
+│   │   │   │   │   │   │   ├── 📄 AccountDao.java
+│   │   │   │   │   │   │   ├── 📁 config/
+│   │   │   │   │   │   │   │   ├── 📄 ApplicationConfiguration.java
+│   │   │   │   │   │   │   ├── 📄 JdbcAccountDao.java
+│   │   │   │   │   │   │   ├── 📄 Main.java
+│   │   │   │   │   │   │   ├── 📄 NamedJdbcAccountDao.java
+│   ├── 📁 resources/
+│   │   ├── 📄 application.properties
+│   │   ├── 📄 jdbc.properties
+├── 📁 test/
+│   ├── 📁 java/
+│   │   ├── 📁 ru/
+│   │   │   ├── 📁 productstar/
+│   │   │   │   ├── 📁 spring/
+│   │   │   │   │   ├── 📁 jdbc1/
+│   │   │   │   │   │   ├── 📁 homework/
+│   │   │   │   │   │   │   ├── 📄 ContactDaoTests.java
