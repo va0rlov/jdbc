@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @Primary
@@ -32,7 +33,7 @@ public class NamedJdbcAccountDao implements AccountDao {
         namedJdbcTemplate.update(
                 "INSERT INTO ACCOUNT(AMOUNT) VALUES(:amount)", new MapSqlParameterSource("amount", amount), keyHolder, new String[]{"id"}
         );
-        var accountId = keyHolder.getKey().longValue();
+        var accountId = Objects.requireNonNull(keyHolder.getKey()).longValue();
         return new Account(accountId, amount);
     }
 

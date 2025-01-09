@@ -1,5 +1,8 @@
 package ru.productstar.spring.jdbc1.manager;
 
+import lombok.Getter;
+
+@Getter
 public class Account {
 
     private final long id;
@@ -11,14 +14,6 @@ public class Account {
         }
         this.id = id;
         this.amount = amount;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public long getAmount() {
-        return amount;
     }
 
     public void setAmount(long amount) {

@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class JdbcAccountDao implements AccountDao {
@@ -38,7 +39,7 @@ public class JdbcAccountDao implements AccountDao {
             ps.setLong(1, amount);
             return ps;
         }, keyHolder);
-        var accountId = keyHolder.getKey().longValue();
+        var accountId = Objects.requireNonNull(keyHolder.getKey()).longValue();
         return new Account(accountId, amount);
     }
 

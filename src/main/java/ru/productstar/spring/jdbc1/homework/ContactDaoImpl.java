@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class ContactDaoImpl implements ContactDao {
@@ -41,7 +42,7 @@ public class ContactDaoImpl implements ContactDao {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedJdbcTemplate.update("INSERT INTO contact (name, surname, email, phone) VALUES (:name, :surname, :email, :phone)", params, keyHolder, new String[]{"id"});
 
-        return keyHolder.getKey().longValue();
+        return Objects.requireNonNull(keyHolder.getKey()).longValue();
     }
 
     @Override
