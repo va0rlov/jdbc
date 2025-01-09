@@ -1,4 +1,6 @@
-package ru.productstar.spring.jdbc1.manager;
+package ru.productstar.spring.jdbc1.dao;
+
+import ru.productstar.spring.jdbc1.model.Account;
 
 import java.util.List;
 

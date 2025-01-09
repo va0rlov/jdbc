@@ -1,4 +1,4 @@
-package ru.productstar.spring.jdbc1.homework;
+package ru.productstar.spring.jdbc1.model;
 
 import lombok.Getter;
 

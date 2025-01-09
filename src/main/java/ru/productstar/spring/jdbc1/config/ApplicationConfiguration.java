@@ -1,12 +1,11 @@
-package ru.productstar.spring.jdbc1.manager.config;
+package ru.productstar.spring.jdbc1.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import ru.productstar.spring.jdbc1.common.JdbcConfiguration;
 
 @Configuration
-@ComponentScan("ru.productstar.spring.jdbc1.manager")
+@ComponentScan("ru.productstar.spring.jdbc1.dao")
 @Import(JdbcConfiguration.class) // Импортируем конфигурацию JdbcConfig
 public class ApplicationConfiguration {
 }

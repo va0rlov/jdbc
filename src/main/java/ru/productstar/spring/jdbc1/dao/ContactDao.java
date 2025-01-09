@@ -1,4 +1,6 @@
-package ru.productstar.spring.jdbc1.homework;
+package ru.productstar.spring.jdbc1.dao;
+
+import ru.productstar.spring.jdbc1.model.Contact;
 
 import java.util.List;
 

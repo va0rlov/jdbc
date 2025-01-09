@@ -1,14 +1,17 @@
-package ru.productstar.spring.jdbc1.manager;
+package ru.productstar.spring.jdbc1;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.productstar.spring.jdbc1.manager.config.ApplicationConfiguration;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import ru.productstar.spring.jdbc1.dao.AccountDao;
 
+@SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
-        var applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
 
-        var accountDao = applicationContext.getBean(AccountDao.class);
+        AccountDao accountDao = applicationContext.getBean(AccountDao.class);
 
         var account = accountDao.getAccount(1L);
         System.out.println(account);

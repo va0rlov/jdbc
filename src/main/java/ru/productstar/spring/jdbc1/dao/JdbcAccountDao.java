@@ -1,10 +1,11 @@
-package ru.productstar.spring.jdbc1.manager;
+package ru.productstar.spring.jdbc1.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import ru.productstar.spring.jdbc1.model.Account;
 
 import java.util.List;
 import java.util.Objects;

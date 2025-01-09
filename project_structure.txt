@@ -14,22 +14,21 @@
 │   │   │   ├── 📁 productstar/
 │   │   │   │   ├── 📁 spring/
 │   │   │   │   │   ├── 📁 jdbc1/
-│   │   │   │   │   │   ├── 📁 common/
+│   │   │   │   │   │   ├── 📁 config/
+│   │   │   │   │   │   │   ├── 📄 ApplicationConfiguration.java
+│   │   │   │   │   │   │   ├── 📄 ContactConfiguration.java
 │   │   │   │   │   │   │   ├── 📄 JdbcConfiguration.java
 │   │   │   │   │   │   │   ├── 📄 PropertiesConfiguration.java
-│   │   │   │   │   │   ├── 📁 homework/
-│   │   │   │   │   │   │   ├── 📄 Contact.java
-│   │   │   │   │   │   │   ├── 📄 ContactConfiguration.java
+│   │   │   │   │   │   ├── 📁 dao/
+│   │   │   │   │   │   │   ├── 📄 AccountDao.java
 │   │   │   │   │   │   │   ├── 📄 ContactDao.java
 │   │   │   │   │   │   │   ├── 📄 ContactDaoImpl.java
-│   │   │   │   │   │   ├── 📁 manager/
-│   │   │   │   │   │   │   ├── 📄 Account.java
-│   │   │   │   │   │   │   ├── 📄 AccountDao.java
-│   │   │   │   │   │   │   ├── 📁 config/
-│   │   │   │   │   │   │   │   ├── 📄 ApplicationConfiguration.java
 │   │   │   │   │   │   │   ├── 📄 JdbcAccountDao.java
-│   │   │   │   │   │   │   ├── 📄 Main.java
 │   │   │   │   │   │   │   ├── 📄 NamedJdbcAccountDao.java
+│   │   │   │   │   │   ├── 📄 Main.java
+│   │   │   │   │   │   ├── 📁 model/
+│   │   │   │   │   │   │   ├── 📄 Account.java
+│   │   │   │   │   │   │   ├── 📄 Contact.java
 │   ├── 📁 resources/
 │   │   ├── 📄 application.properties
 │   │   ├── 📄 jdbc.properties
@@ -39,7 +38,7 @@
 │   │   │   ├── 📁 productstar/
 │   │   │   │   ├── 📁 spring/
 │   │   │   │   │   ├── 📁 jdbc1/
-│   │   │   │   │   │   ├── 📁 homework/
+│   │   │   │   │   │   ├── 📁 dao/
 │   │   │   │   │   │   │   ├── 📄 ContactDaoTests.java
 │   ├── 📁 resources/
 │   │   ├── 📄 contact.sql

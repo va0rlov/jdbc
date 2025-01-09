@@ -1,12 +1,12 @@
-package ru.productstar.spring.jdbc1.homework;
+package ru.productstar.spring.jdbc1.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import ru.productstar.spring.jdbc1.common.JdbcConfiguration;
-import ru.productstar.spring.jdbc1.common.PropertiesConfiguration;
+import ru.productstar.spring.jdbc1.dao.ContactDao;
+import ru.productstar.spring.jdbc1.dao.ContactDaoImpl;
 
 @Configuration
 @Import({JdbcConfiguration.class, PropertiesConfiguration.class})
