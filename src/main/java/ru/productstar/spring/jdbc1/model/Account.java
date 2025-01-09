@@ -1,8 +1,5 @@
 package ru.productstar.spring.jdbc1.model;
 
-import lombok.Getter;
-
-//@Getter
 public record Account(long id, long amount) {
 
     public Account {
