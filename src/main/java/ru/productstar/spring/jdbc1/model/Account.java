@@ -2,18 +2,13 @@ package ru.productstar.spring.jdbc1.model;
 
 import lombok.Getter;
 
-@Getter
-public class Account {
+//@Getter
+public record Account(long id, long amount) {
 
-    private final long id;
-    private long amount;
-
-    public Account(long id, long amount) {
+    public Account {
         if (amount < 0) {
             throw new IllegalArgumentException("Amount cannot be negative");
         }
-        this.id = id;
-        this.amount = amount;
     }
 
     @Override
