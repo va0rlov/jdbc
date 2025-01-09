@@ -31,6 +31,10 @@ dependencies {
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
+tasks.withType(Test) {
+	jvmArgs '-Xshare:off' // Отключаем CDS для тестов
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
