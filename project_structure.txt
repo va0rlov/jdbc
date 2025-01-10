@@ -31,7 +31,7 @@
 │   │   │   │   │   │   │   ├── 📄 Contact.java
 │   ├── 📁 resources/
 │   │   ├── 📄 application.properties
-│   │   ├── 📄 jdbc.properties
+│   │   ├── 📄 application.properties
 ├── 📁 test/
 │   ├── 📁 java/
 │   │   ├── 📁 ru/

@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:jdbc.properties")
+@PropertySource("classpath:application.properties")
 public class JdbcConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(JdbcConfiguration.class);
