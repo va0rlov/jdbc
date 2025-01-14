@@ -61,8 +61,11 @@ public class ContactDaoImpl implements ContactDao {
         String sql = "SELECT COUNT(*) FROM contact WHERE email = :email OR phone = :phone";
         MapSqlParameterSource params = new MapSqlParameterSource().addValue("email", email).addValue("phone", phone);
 
-        int count = namedJdbcTemplate.queryForObject(sql, params, Integer.class);
-        return count > 0;
+        // Используем Integer вместо int
+        Integer count = namedJdbcTemplate.queryForObject(sql, params, Integer.class);
+
+        // Если count равен null, считаем, что контакт не существует
+        return count != null && count > 0;
     }
 
     @Override
