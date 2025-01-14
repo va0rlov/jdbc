@@ -4,15 +4,15 @@ import ru.productstar.spring.jdbc1.model.Contact;
 
 import java.util.List;
 
-/**
- * Data Access Object for managing contacts in the database.
- */
 public interface ContactDao {
+
     List<Contact> getAllContacts();
 
     Contact getContact(long contactId);
 
     long addContact(Contact contact);
+
+    void addContactsBatch(List<Contact> contacts); // Новый метод для батчевой вставки
 
     void updatePhoneNumber(long contactId, String phoneNumber);
 

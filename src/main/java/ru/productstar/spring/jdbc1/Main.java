@@ -5,10 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import ru.productstar.spring.jdbc1.dao.AccountDao;
-import ru.productstar.spring.jdbc1.model.Account;
+import ru.productstar.spring.jdbc1.service.AccountService;
+import ru.productstar.spring.jdbc1.service.ContactService;
 
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 @SpringBootApplication
 public class Main {
@@ -18,29 +19,44 @@ public class Main {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Main.class, args);
 
-        AccountDao accountDao = applicationContext.getBean(AccountDao.class);
+        // Запуск работы с аккаунтами
+        if (args.length > 0 && "accounts".equals(args[0])) {
+            runAccountService(applicationContext);
+        }
 
-        // 1 получение всех записей из таблицы
-        List<Account> accountsOld = accountDao.getAllAccounts(); // List<Account
-        log.info("All Accounts (before changes): {}", accountsOld);
+        // Запуск работы с контактами
+        if (args.length > 0 && "contacts".equals(args[0])) {
+            runContactService(applicationContext);
+        }
+    }
 
-        // 2 удаление всех записей из таблицы
-        accountDao.deleteAllAccounts();
-        log.info("All accounts deleted.");
+    private static void runAccountService(ConfigurableApplicationContext context) {
+        AccountService accountService = context.getBean(AccountService.class);
 
-        // 3 добавление записей в таблицу
-        accountDao.addAccount(1L, 1000L);
-        accountDao.addAccount(2L, 2000L);
-        accountDao.addAccount(3L, 3000L);
-        accountDao.addAccount(10L, 10000L);
-        log.info("Accounts added: {}", accountDao.getAllAccounts());
+        // 1. Получение всех записей из таблицы
+        accountService.getAllAccounts();
 
-        // 4 изменение записи ID=1 amount=5000
-        accountDao.setAmount(1L, 5000L);
-        log.info("Account ID=1 amount changed, current amount: {}", accountDao.getAccount(1L));
+        // 2. Удаление всех записей из таблицы
+        accountService.deleteAllAccounts();
 
-        // 5 получение всех записей из таблицы
-        List<Account> accountsNew = accountDao.getAllAccounts(); // List<Account>
-        log.info("All Accounts (after changes): {}", accountsNew);
+        // 3. Добавление записей в таблицу
+        accountService.addAccounts();
+
+        // 4. Изменение записи ID=1 amount=5000
+        accountService.updateAccount(1L, 5000L);
+
+        // 5. Получение всех записей из таблицы
+        accountService.getAccountsAfterChanges();
+    }
+
+    private static void runContactService(ConfigurableApplicationContext context) {
+        ContactService contactService = context.getBean(ContactService.class);
+
+        try (FileInputStream inputStream = new FileInputStream("C:\\Users\\VOrlov\\Code\\jdbc1\\src\\main\\resources\\contacts.csv")) {
+            contactService.importContactsFromCsv(inputStream);
+            log.info("Contacts imported successfully.");
+        } catch (IOException e) {
+            log.error("Error reading CSV file", e);
+        }
     }
 }

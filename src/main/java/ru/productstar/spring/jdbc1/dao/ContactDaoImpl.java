@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -44,6 +45,14 @@ public class ContactDaoImpl implements ContactDao {
         namedJdbcTemplate.update("INSERT INTO contact (name, surname, email, phone) VALUES (:name, :surname, :email, :phone)", params, keyHolder, new String[]{"id"});
 
         return Objects.requireNonNull(keyHolder.getKey()).longValue();
+    }
+
+    @Override
+    public void addContactsBatch(List<Contact> contacts) {
+        logger.info("Adding contacts batch: {}", contacts.size());
+        SqlParameterSource[] batchParams = contacts.stream().map(contact -> new MapSqlParameterSource().addValue("name", contact.getName()).addValue("surname", contact.getSurname()).addValue("email", contact.getEmail()).addValue("phone", contact.getPhone())).toArray(SqlParameterSource[]::new);
+
+        namedJdbcTemplate.batchUpdate("INSERT INTO contact (name, surname, email, phone) VALUES (:name, :surname, :email, :phone)", batchParams);
     }
 
     @Override

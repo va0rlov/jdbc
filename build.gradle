@@ -39,7 +39,7 @@ dependencies {
 }
 
 springBoot {
-	mainClass = 'ru.productstar.spring.jdbc1.manager.Main'
+	mainClass = 'ru.productstar.spring.jdbc1.Main'
 }
 
 tasks.named('test') {
