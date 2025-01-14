@@ -45,9 +45,14 @@ public class ContactServiceImpl implements ContactService {
                     String phone = values[2].trim();
                     String email = values[3].trim();
 
-                    // Создаем объект Contact и добавляем его в список
-                    Contact contact = new Contact(name, surname, email, phone);
-                    contacts.add(contact);
+                    // Проверяем, существует ли контакт с таким email или телефоном
+                    if (!contactDao.contactExists(email, phone)) {
+                        // Создаем объект Contact и добавляем его в список
+                        Contact contact = new Contact(name, surname, email, phone);
+                        contacts.add(contact);
+                    } else {
+                        logger.warn("Contact with email {} or phone {} already exists. Skipping.", email, phone);
+                    }
                 } else {
                     logger.warn("Skipping invalid line: {}", line);
                 }
@@ -56,9 +61,7 @@ public class ContactServiceImpl implements ContactService {
 
         // Batch insert contacts
         if (!contacts.isEmpty()) {
-            for (Contact contact : contacts) {
-                contactDao.addContact(contact);
-            }
+            contactDao.addContactsBatch(contacts);
             logger.info("Imported {} contacts from CSV file.", contacts.size());
         } else {
             logger.warn("No contacts were imported. CSV file might be empty or invalid.");

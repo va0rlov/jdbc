@@ -56,6 +56,16 @@ public class ContactDaoImpl implements ContactDao {
     }
 
     @Override
+    public boolean contactExists(String email, String phone) {
+        logger.info("Checking if contact exists with email: {} and phone: {}", email, phone);
+        String sql = "SELECT COUNT(*) FROM contact WHERE email = :email OR phone = :phone";
+        MapSqlParameterSource params = new MapSqlParameterSource().addValue("email", email).addValue("phone", phone);
+
+        int count = namedJdbcTemplate.queryForObject(sql, params, Integer.class);
+        return count > 0;
+    }
+
+    @Override
     public void updatePhoneNumber(long contactId, String phoneNumber) {
         logger.info("Updating phone number for contact id: {}", contactId);
         namedJdbcTemplate.update("UPDATE contact SET phone = :phone WHERE id = :id", new MapSqlParameterSource().addValue("id", contactId).addValue("phone", phoneNumber));
